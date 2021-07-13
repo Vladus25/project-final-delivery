@@ -1,0 +1,83 @@
+main#bye-container{
+    background-color: #FFC244;
+    min-height: 100vh;
+
+    #container-result{
+        display: flex;
+        justify-content: center;
+        *{
+            font-family:'Segoe UI';
+        }
+
+        #container-text{
+            margin-top: 50px;
+            width: 450px;
+            height: 200px;
+            border-radius: 10px;
+            background-color: white;
+
+            h2{
+                text-align: center;
+            }
+
+            lottie-player{
+                margin: auto;
+            }
+        }
+
+        h2{
+            text-align: center;
+            padding-top: 25px;
+        }
+
+        #scooter{
+            position: absolute;
+            animation: run 6s;
+        }
+
+        @-webkit-keyframes run {
+            from {
+                left: 0px;
+            }
+
+            to {
+                left: 90%;
+            }
+        }
+
+    }
+}
+
+// Small
+@media screen and (max-width: 576px) {
+
+    main#bye-container{
+        min-width: 350px;
+
+        #container-result{
+
+            #container-text{
+                width: 95%;
+                margin: auto;
+                margin-top: 30px;
+                height: 200px;
+            }
+
+            h2{
+                font-size: 20px;
+            }
+
+
+            @-webkit-keyframes run {
+                from {
+                    left: 0px;
+                }
+
+                to {
+                    left: 80%;
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,427 @@
+main.details {
+    background-color: whitesmoke;
+    // overflow: hidden; non toccare (problemi con sticky posotion carrello)
+    .details-jumbotron {
+        width: 100%;
+        height: 250px;
+        background-color: #ffc244;
+        padding: 40px 0 0px;
+
+        .jumbo-img{
+            height: 100%;
+            max-width: 1270px;
+            margin: 0 10%;
+            padding-top: 30px;
+            position: relative;
+            bottom: -80px;
+            // background-image: url('/storage/restaurant-img/restaurant1.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 20px rgb(0 0 0 / 30%);
+            border-radius: 15px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+            h2{
+                text-transform: capitalize;
+                color: white;
+                // flex-basis: 100%;
+                text-align: center;
+                font-size: 30px;
+                font-weight: normal;
+                margin-bottom: 8px;
+                text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+            }
+            .info-badge{
+                flex-basis: 23px;
+                @include info-details;
+                text-align: center;
+                overflow: hidden;
+                position: relative;
+                bottom: 12px;
+                i{
+                    vertical-align: middle;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .restaurant-info {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        bottom: 40px;
+        background-color: whitesmoke;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 31px, rgba(0, 0, 0, 0.12) 0px -12px 15px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 8px 9px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        text-align: center;
+
+        #info-box{
+            display: none;
+            h3:first-child {
+                border-bottom: 1px solid lightgrey;
+                cursor: pointer;
+                padding: 5px;
+            }
+
+        }
+
+        #info-box {
+            display: block;
+        }
+
+    }
+
+    .dishes-box{
+        min-height: 400px;
+        margin: 120px 10% 50px;
+        max-width: 1270px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        // overflow: hidden;
+        h3{
+            font-weight: normal;
+            margin-bottom: 20px;
+            flex-basis: 100%;
+        }
+        ul:not(.overview ul, .modal ul){
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            flex-basis: calc(100% / 3 * 2);
+            margin:0 -10px ;
+            cursor: default;
+            .dish-element {
+                flex-basis: calc(100% / 2 - 20px);
+                // min-width: 320px;
+                height: 170px;
+                margin: 0 10px 20px;
+                padding: 15px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: space-between;
+                background-color: white;
+                box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+                transition: box-shadow 0.3s;
+                .left-side {
+                    flex-basis: 50%;
+                    min-width: 150px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .product-name{
+                        text-transform: capitalize;
+                        word-wrap: break-word;
+                    }
+                    .add{
+                        span{
+                            font-family: "Raleway", sans-serif;
+                        }
+                    }
+                }
+
+                .right-side{
+                    flex-basis: 50%;
+                    overflow: hidden;
+                    position: relative;
+                    margin-left: 10px;
+                    img{
+                        min-width: 140px;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                    .product-info-badge {
+                        text-align: center;
+                        width: 23px;
+                        position: absolute;
+                        top: 7px;
+                        right:7px;
+                        @include info-details;
+                        margin: 0;
+                    }
+                }
+
+                &:hover {
+                    // box-shadow: 0 3px 10px rgb(0 0 0 / 40%);
+                    box-shadow: 0px 22px 24px 0px rgb(0 0 0 / 4%);
+                }
+            }
+        }
+
+        // Bottone aggiungi al carrello/aumenta quantità prodotto
+        .green-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 50%;
+            background-color: rgba(0, 172, 0, 0.178);
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+            vertical-align: middle;
+            transition: background-color .3s, transform .3s;
+            i{
+                color:rgba(0, 180, 60, 0.76);
+                font-size: 20px;
+                vertical-align: middle;
+                transition: color .3s;
+            }
+            &:hover{
+                transform: scale(1.2);
+                background-color: rgba(0, 172, 0, 0.521);
+                i{
+                    color:white;
+                }
+            }
+        }
+
+        // Bottone diminuisci quantità/rimuovi prodotto
+        .red-btn{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 50%;
+            background-color: rgba(172, 0, 9, 0.178);
+            text-align: center;
+            overflow: hidden;
+            vertical-align: middle;
+            transition: background-color .3s, transform .3s;
+            i{
+                color:rgba(180, 0, 60, 0.76);
+                font-size: 20px;
+                vertical-align: middle;
+                transition: color .3s;
+            }
+            &:hover{
+                transform: scale(1.2);
+                background-color: rgb(88, 0, 29);
+                i{
+                    color:white;
+                }
+            }
+        }
+
+        .overview {
+            width: calc(100% / 3);
+            // min-width: 260px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            background-color: white;
+            box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+            border-radius: 8px;
+            overflow: hidden;
+
+            .checkout-title{
+                padding: 20px 15px;
+                border-bottom: 1px solid lightgrey;
+                margin-bottom: 0;
+                text-align: center;
+                font-family: "Fredoka One", cursive;
+                font-weight: normal;
+            }
+            .temp-cart {
+                text-align: center;
+                padding: 20px 0 30px;
+                min-height: 200px;
+                position: relative;
+                img {
+                    position: absolute;
+                    height: 72%;
+                    top: 55%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    opacity: 0.4;
+                    max-height: 160px;
+                }
+
+                ul.lista-carrello{
+                    min-height: 170px;
+                    .cartlist{
+                        display: flex;
+                        font-size: 18px;
+                        padding: 0 15px 20px;
+                        background-color: white;
+                        #name-product{
+                            display: flex;
+                            flex-basis: 40%;
+                            font-size: 14px;
+                            font-weight: normal;
+                            text-transform: capitalize;
+                            padding-right: 10px;
+                            word-wrap: break-word;
+                            flex-shrink: 1;
+                            font-family: "Raleway", sans-serif;
+                        }
+
+                        #modification{
+                            display: flex;
+                            flex-basis: 60%;
+                            min-width: 120px;
+                            justify-content: space-between;
+                            font-size: 14px;
+                            .plus-minus{
+                                min-width: 50px;
+                                p{
+                                    padding-left: 5px;
+                                }
+                            }
+                        }
+
+                        .fas{
+                            margin-left: 5px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
+                .totalprice{
+                    border-top: 1px solid lightgrey;
+                    padding: 30px 0 15px;
+                    font-family: "Fredoka One", cursive;
+                    font-weight: normal;
+                    font-size: 18px;
+                }
+
+                .payment{
+                    padding: 0 15px 0;
+
+                    button{
+                        width: 100%;
+                        font-size: 20px;
+                        height: 50px;
+                        border: 1px solid transparent;
+                        border-radius: 5px;
+                        padding: 5px 15px;
+                        background-color: #ffc244;
+                        font-family: "Raleway", sans-serif;
+                        font-weight: bold;
+                        font-size: 18px;
+                        color: white;
+                        text-decoration: none;
+                        padding: 0 15px;
+                        transition: background-color 0.5s, color 0.5s;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: #ffd47f;
+                            color: rgb(207, 207, 207);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+#img-edit-product {
+    min-width: 120px;
+}
+
+// --- Media query sopra i 1588px Speciale ---
+@media screen and (min-width: 1588px) {
+    main.details {
+        .details-jumbotron {
+            .jumbo-img{
+                margin: 0 auto;
+            }
+        }
+        .dishes-box{
+            margin: 120px auto 50px;
+            ul:not(.overview ul, .modal ul){
+                // flex-basis: calc(100% / 2);
+                .dish-element {
+                    // flex-basis: calc(100% / 1 - 20px);
+                }
+            }
+        }
+    }
+}
+
+// --- Media query soto i 1350px Speciale ---
+@media screen and (max-width: 1350px) {
+    main.details {
+        .dishes-box{
+            ul:not(.overview ul, .modal ul){
+                flex-basis: calc(100% / 2);
+                .dish-element {
+                    flex-basis: calc(100% / 1 - 20px);
+                }
+            }
+            .overview {
+                width: calc(100% / 2 - 20px);
+            }
+        }
+    }
+}
+
+
+// --- Media query md fino a 991px---
+@media screen and (max-width: 991px) {
+    main.details {
+        .dishes-box{
+            ul:not(.overview ul, .modal ul){
+                flex-basis: calc(100% / 1);
+                .dish-element {
+                    flex-basis: calc(100% / 1 - 20px);
+                    height: 200px;
+                }
+            }
+            .overview {
+                width: calc(100% / 1 - 20px);
+            }
+        }
+    }
+}
+
+// --- Media query sm fino a 768px---
+@media screen and (max-width: 767px) {
+    main.details {
+        .dishes-box{
+            ul:not(.overview ul .modal ul){
+                .dish-element {
+                    height: 170px;
+                }
+            }
+        }
+    }
+}
+
+// --- Media query xs fino a 576px ---
+@media screen and (max-width: 576px) {
+    main.details {
+        .details-jumbotron {
+            .jumbo-img{
+                margin: 0 20px;
+            }
+        }
+        .dishes-box{
+            margin: 120px 20px 50px;
+            justify-content: center;
+            ul:not(.overview ul, .modal ul){
+                .dish-element {
+                    flex-basis: calc(100% / 1);
+                    margin: 0 0 20px;
+                }
+            }
+            .overview {
+                width: calc(100% / 1);
+            }
+        }
+    }
+}
